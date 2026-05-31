@@ -10,7 +10,7 @@ namespace FinanceTracker.Application.Interfaces.Repositories
     public interface ICategoryRepository
     {
         Task<List<Category>> GetAllCategoriesByUserId(int userId);
-        Task<Category?> GetCategoryById(int Id);
+        Task<Category?> GetCategoryByIdAsync(int Id);
         Task AddCategoryAsync(Category category);
         Task UpdateCategoryAsync(Category category);
         Task DeleteCategoryAsync(Category category);

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FinanceTracker.Domain.Enums
 {
-    public enum IsRecurring
+    public enum RecurrencePeriod
     {
         Daily,
         Weekly,

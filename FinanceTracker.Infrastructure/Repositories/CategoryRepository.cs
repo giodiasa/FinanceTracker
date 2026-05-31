@@ -32,7 +32,7 @@ namespace FinanceTracker.Infrastructure.Repositories
             return await _context.Categories.Where(c => c.UserId == userId).ToListAsync();
         }
 
-        public async Task<Category?> GetCategoryById(int Id)
+        public async Task<Category?> GetCategoryByIdAsync(int Id)
         {
             return await _context.Categories.FirstOrDefaultAsync(x => x.Id == Id);
         }

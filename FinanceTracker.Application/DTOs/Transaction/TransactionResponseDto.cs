@@ -1,11 +1,12 @@
-﻿using FinanceTracker.Domain.Enums;
+﻿using FinanceTracker.Domain.Entities;
+using FinanceTracker.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace FinanceTracker.Domain.Entities
+namespace FinanceTracker.Application.DTOs.Transaction
 {
-    public class Transaction
+    public class TransactionResponseDto
     {
         public int Id { get; set; }
         public decimal Amount { get; set; }
@@ -15,9 +16,7 @@ namespace FinanceTracker.Domain.Entities
         public bool IsRecurring { get; set; }
         public RecurrencePeriod? RecurrencePeriod { get; set; }
         public DateTime? NextOccurrence { get; set; }
-        public int UserId { get; set; }
-        public User User { get; set; } = null!;
         public int CategoryId { get; set; }
-        public Category Category { get; set; } =  null!;
+        public string CategoryName { get; set; } = string.Empty;
     }
 }

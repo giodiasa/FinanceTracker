@@ -28,7 +28,7 @@ namespace FinanceTracker.Infrastructure.Services
 
         public async Task DeleteCategoryAsync(int id, int userId)
         {
-            Category? categoryToDelete = await _categoryRepository.GetCategoryById(id);
+            Category? categoryToDelete = await _categoryRepository.GetCategoryByIdAsync(id);
             if (categoryToDelete == null || categoryToDelete.UserId != userId)
             {
                 throw new AppException("CATEGORY_NOT_FOUND_OR_BELONGS_TO_OTHER_USER", "კატეგორია არ არსებობს ან სხვა იუზერს ეკუთვნის", 404);
@@ -48,7 +48,7 @@ namespace FinanceTracker.Infrastructure.Services
 
         public async Task UpdateCategoryAsync(int id, int userId, UpdateCategoryRequestDto category)
         {
-            Category? categoryToUpdate = await _categoryRepository.GetCategoryById(id);
+            Category? categoryToUpdate = await _categoryRepository.GetCategoryByIdAsync(id);
             if (categoryToUpdate == null || categoryToUpdate.UserId != userId)
             {
                 throw new AppException("CATEGORY_NOT_FOUND_OR_BELONGS_TO_OTHER_USER", "კატეგორია არ არსებობს ან სხვა იუზერს ეკუთვნის", 404);
