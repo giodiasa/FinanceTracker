@@ -95,7 +95,7 @@ namespace FinanceTracker.Infrastructure.Services
                 Currency = transaction.Currency,
                 TransactionDate = nextUpdate.Value,
                 Description = transaction.Description,
-                IsRecurring = false
+                IsRecurring = true
             };
             transaction.NextOccurrence = CalculateNextOccurrence(nextUpdate.Value, transaction.RecurrencePeriod!.Value);
             await _transactionRepository.UpdateTransactionAsync(transaction);
