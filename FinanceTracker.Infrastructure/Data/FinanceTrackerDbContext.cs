@@ -32,6 +32,17 @@ namespace FinanceTracker.Infrastructure.Data
                 .HasOne(x => x.User)
                 .WithMany(x => x.Transactions)
                 .HasForeignKey(x => x.UserId);
+            builder.Entity<User>()
+                .HasIndex(x => x.Email)
+                .IsUnique();
+            builder.Entity<User>()
+                .Property(x => x.Email)
+                .HasMaxLength(100)
+                .IsRequired();
+            builder.Entity<Category>()
+                .HasOne(x => x.User)
+                .WithMany(x => x.Categories)
+                .HasForeignKey(x => x.UserId);
         }
     }
 }

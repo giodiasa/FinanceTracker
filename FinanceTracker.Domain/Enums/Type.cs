@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FinanceTracker.Domain.Enums
 {
-    public enum Type
+    public enum CategoryType
     {
         Income,
         Expense

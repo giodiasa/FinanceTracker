@@ -1,3 +1,4 @@
+using FinanceTracker.Application;
 using FinanceTracker.Application.Interfaces.Repositories;
 using FinanceTracker.Application.Interfaces.Services;
 using FinanceTracker.Infrastructure.Data;
@@ -14,10 +15,14 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<FinanceTrackerDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("SqliteConnection")));
+
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
 builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+
 builder.Services.AddControllers();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
@@ -37,6 +42,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 builder.Services.AddAuthorization();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+builder.Services.AddAutoMapper(cfg => { }, typeof(MappingProfile).Assembly);
 
 var app = builder.Build();
 

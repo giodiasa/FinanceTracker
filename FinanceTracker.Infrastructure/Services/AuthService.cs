@@ -1,4 +1,5 @@
 ﻿using FinanceTracker.Application.DTOs.Authentication;
+using FinanceTracker.Application.Exceptions;
 using FinanceTracker.Application.Interfaces.Repositories;
 using FinanceTracker.Application.Interfaces.Services;
 using FinanceTracker.Domain.Entities;
@@ -21,7 +22,10 @@ namespace FinanceTracker.Infrastructure.Services
             var user = await _userRepository.GetByEmailAsync(dto.Email);
 
             if (user == null || !_passwordHasher.Verify(dto.Password, user.HashPassword))
-                throw new Exception("Invalid credentials");
+                throw new AppException(
+                    code: "INVALID_CREDENTIALS",
+                    message: "Invalid email or password",
+                    statusCode: 401);
 
             var token = _tokenGenerator.GenerateToken(user);
 
@@ -35,7 +39,10 @@ namespace FinanceTracker.Infrastructure.Services
         {
             var existingUser = await _userRepository.GetByEmailAsync(dto.Email);
             if (existingUser != null)
-                throw new Exception("User already exists");
+                throw new AppException(
+                    code: "EMAIL_ALREADY_EXISTS",
+                    message: "Email is already registered",
+                    statusCode: 409);
 
             var user = new User
             {

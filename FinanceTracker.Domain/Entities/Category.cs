@@ -9,9 +9,11 @@ namespace FinanceTracker.Domain.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
-        public required Enums.Type Type { get; set; }
+        public required CategoryType  CategoryType { get; set; }
         public required Currency Currency { get; set; }
         public decimal? BudgetLimit { get; set; }
         public List<Transaction> Transactions { get; set; } = [];
+        public User User { get; set; } = null!;
+        public int UserId { get; set; }
     }
 }

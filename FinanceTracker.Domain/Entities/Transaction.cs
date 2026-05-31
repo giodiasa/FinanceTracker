@@ -15,8 +15,8 @@ namespace FinanceTracker.Domain.Entities
         public IsRecurring? IsRecurring { get; set; }
         public DateTime? NextOccurrence { get; set; }
         public int UserId { get; set; }
-        public required User User { get; set; }
+        public User User { get; set; } = null!;
         public int CategoryId { get; set; }
-        public required Category Category { get; set; }
+        public Category Category { get; set; } =  null!;
     }
 }
