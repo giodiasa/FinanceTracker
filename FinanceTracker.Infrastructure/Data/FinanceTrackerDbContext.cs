@@ -1,5 +1,4 @@
 ﻿using FinanceTracker.Domain.Entities;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -7,12 +6,13 @@ using System.Text;
 
 namespace FinanceTracker.Infrastructure.Data
 {
-    public class FinanceTrackerDbContext : IdentityDbContext<User>
+    public class FinanceTrackerDbContext : DbContext
     {
         public FinanceTrackerDbContext(DbContextOptions options) : base(options)
         {
         }
 
+        public DbSet<User> Users { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
         public DbSet<ExchangeRate> ExchangeRates { get; set; }
