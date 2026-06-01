@@ -52,6 +52,7 @@ namespace FinanceTracker.Infrastructure.Services
             };
 
             await _userRepository.AddAsync(user);
+            await _userRepository.SaveChangesAsync();
         }
     }
 }

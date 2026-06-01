@@ -16,5 +16,6 @@ namespace FinanceTracker.Application.Interfaces.Repositories
         Task<List<Transaction>> GetRecurringTransactionsAsync(int userId);
         Task<int> GetTransactionsCountAsync(int userId,int? categoryId,CategoryType? type,Currency? currency,DateTime? from,DateTime? to);
         Task<bool> ExistsByCategoryAndDateAsync(int userId, int categoryId, DateTime date);
+        Task SaveChangesAsync();
     }
 }

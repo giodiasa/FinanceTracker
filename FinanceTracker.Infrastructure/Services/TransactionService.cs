@@ -51,6 +51,7 @@ namespace FinanceTracker.Infrastructure.Services
             }
             transactionEntity.UserId = userId;
             await _transactionRepository.AddTransactionAsync(transactionEntity);
+            await _transactionRepository.SaveChangesAsync();
         }
 
         public async Task DeleteTransactionAsync(int id, int userId)
@@ -61,6 +62,7 @@ namespace FinanceTracker.Infrastructure.Services
                 throw new AppException("TRANSACTION_NOT_FOUND", "ტრანზაქცია არ მოიძებნა", 404);
             }
             await _transactionRepository.DeleteTransactionAsync(transactionToDelete);
+            await _transactionRepository.SaveChangesAsync();
         }
 
         public async Task GenerateNextAsync(int id, int userId)
@@ -95,11 +97,12 @@ namespace FinanceTracker.Infrastructure.Services
                 Currency = transaction.Currency,
                 TransactionDate = nextUpdate.Value,
                 Description = transaction.Description,
-                IsRecurring = true
+                IsRecurring = false
             };
             transaction.NextOccurrence = CalculateNextOccurrence(nextUpdate.Value, transaction.RecurrencePeriod!.Value);
-            await _transactionRepository.UpdateTransactionAsync(transaction);
             await _transactionRepository.AddTransactionAsync(newTransaction);
+            await _transactionRepository.SaveChangesAsync();
+
         }
 
         public async Task<List<TransactionResponseDto>> GetRecurringTransactionsAsync(int userId)
@@ -162,6 +165,7 @@ namespace FinanceTracker.Infrastructure.Services
                 transactionToUpdate.RecurrencePeriod = null;
             }
             await _transactionRepository.UpdateTransactionAsync(transactionToUpdate);
+            await _transactionRepository.SaveChangesAsync();
         }
         private DateTime CalculateNextOccurrence(DateTime transactionDate,RecurrencePeriod recurrencePeriod)
         {

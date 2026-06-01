@@ -18,13 +18,11 @@ namespace FinanceTracker.Infrastructure.Repositories
         public async Task AddCategoryAsync(Category category)
         {
             await _context.Categories.AddAsync(category);
-            await _context.SaveChangesAsync();
         }
 
         public async Task DeleteCategoryAsync(Category category)
         {
             _context.Categories.Remove(category);
-            await _context.SaveChangesAsync();
         }
 
         public async Task<List<Category>> GetAllCategoriesByUserId(int userId)
@@ -45,6 +43,9 @@ namespace FinanceTracker.Infrastructure.Repositories
         public async Task UpdateCategoryAsync(Category category)
         {
             _context.Categories.Update(category);
+        }
+        public async Task SaveChangesAsync()
+        {
             await _context.SaveChangesAsync();
         }
     }

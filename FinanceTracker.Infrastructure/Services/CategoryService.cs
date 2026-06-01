@@ -24,6 +24,7 @@ namespace FinanceTracker.Infrastructure.Services
             Category newCategory = _mapper.Map<Category>(category);
             newCategory.UserId = userId;
             await _categoryRepository.AddCategoryAsync(newCategory);
+            await _categoryRepository.SaveChangesAsync();
         }
 
         public async Task DeleteCategoryAsync(int id, int userId)
@@ -38,6 +39,7 @@ namespace FinanceTracker.Infrastructure.Services
                 throw new AppException("CATEGORY_HAS_TRANSACTIONS", "კატეგორიას აქვს ტრანზაქციები, ამიტომ ვერ წაიშლება", 409);
             }
             await _categoryRepository.DeleteCategoryAsync(categoryToDelete);
+            await _categoryRepository.SaveChangesAsync();
         }
 
         public async Task<List<CategoryResponseDto>> GetAllCategoriesByUserId(int userId)
@@ -55,6 +57,7 @@ namespace FinanceTracker.Infrastructure.Services
             }
             _mapper.Map(category, categoryToUpdate);
             await _categoryRepository.UpdateCategoryAsync(categoryToUpdate);
+            await _categoryRepository.SaveChangesAsync();
         }
     }
 }

@@ -19,13 +19,11 @@ namespace FinanceTracker.Infrastructure.Repositories
         public async Task AddTransactionAsync(Transaction transaction)
         {
             await _context.Transactions.AddAsync(transaction);
-            await _context.SaveChangesAsync();
         }
 
         public async Task DeleteTransactionAsync(Transaction transaction)
         {
             _context.Transactions.Remove(transaction);
-            await _context.SaveChangesAsync();
         }
 
         public async Task<bool> ExistsByCategoryAndDateAsync(int userId, int categoryId, DateTime date)
@@ -119,6 +117,9 @@ namespace FinanceTracker.Infrastructure.Repositories
         public async Task UpdateTransactionAsync(Transaction transaction)
         {
             _context.Transactions.Update(transaction);
+        }
+        public async Task SaveChangesAsync()
+        {
             await _context.SaveChangesAsync();
         }
     }

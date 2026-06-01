@@ -9,5 +9,6 @@ namespace FinanceTracker.Application.Interfaces.Repositories
     {
         Task<User?> GetByEmailAsync(string email);
         Task AddAsync(User user);
+        Task SaveChangesAsync();
     }
 }

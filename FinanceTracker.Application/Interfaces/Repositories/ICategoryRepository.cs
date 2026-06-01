@@ -15,5 +15,6 @@ namespace FinanceTracker.Application.Interfaces.Repositories
         Task UpdateCategoryAsync(Category category);
         Task DeleteCategoryAsync(Category category);
         Task<bool> HasTransactionsAsync(int categoryId);
+        Task SaveChangesAsync();
     }
 }
