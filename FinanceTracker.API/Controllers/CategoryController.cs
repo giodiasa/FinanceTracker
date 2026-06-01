@@ -7,7 +7,7 @@ using System.Security.Claims;
 namespace FinanceTracker.API.Controllers
 {
     [Authorize]
-    [Route("api/categories")]
+    [Route("categories")]
     [ApiController]
     public class CategoryController : ControllerBase
     {

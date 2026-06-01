@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using AutoMapper;
+﻿using AutoMapper;
 using FinanceTracker.Application.DTOs.Category;
+using FinanceTracker.Application.DTOs.ExchaneRate;
 using FinanceTracker.Application.DTOs.Transaction;
 using FinanceTracker.Domain.Entities;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace FinanceTracker.Application
 {
@@ -20,7 +21,8 @@ namespace FinanceTracker.Application
             CreateMap<Transaction, TransactionResponseDto>()
                 .ForMember(
                 dest => dest.CategoryName,
-                opt => opt.MapFrom(src => src.Category.Name)); ;
+                opt => opt.MapFrom(src => src.Category.Name));
+            CreateMap<ExchangeRate, ExchangeRateResponseDto>();
         }
     }
 }

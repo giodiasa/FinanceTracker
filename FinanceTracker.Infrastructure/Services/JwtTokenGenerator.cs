@@ -36,7 +36,7 @@ namespace FinanceTracker.Infrastructure.Services
                 issuer: _config["JwtConfig:Issuer"],
                 audience: _config["JwtConfig:Audience"],
                 claims: claims,
-                expires: DateTime.UtcNow.AddHours(2),
+                expires: DateTime.Now.AddHours(2),
                 signingCredentials: creds
             );
 

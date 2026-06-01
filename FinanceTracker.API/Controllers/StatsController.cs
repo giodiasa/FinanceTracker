@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace FinanceTracker.API.Controllers
 {
     [Authorize]
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class StatsController : ControllerBase
     {

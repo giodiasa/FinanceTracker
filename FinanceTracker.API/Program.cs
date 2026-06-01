@@ -29,6 +29,8 @@ builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
 builder.Services.AddScoped<ITransactionService, TransactionService>();
 builder.Services.AddScoped<IStatsRepository, StatsRepository>();
 builder.Services.AddScoped<IStatsService, StatsService>();
+builder.Services.AddScoped<IExchangeRateRepository, ExchangeRateRepository>();
+builder.Services.AddScoped<IExchangeRateService, ExchangeRateService>();
 
 builder.Services.AddControllers().AddJsonOptions(options =>
 {

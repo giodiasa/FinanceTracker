@@ -33,7 +33,7 @@ namespace FinanceTracker.Infrastructure.Services
                 throw new AppException("AMOUNT_IS_NEGATIVE", "ოდენობა უნდა იყოს 0-ზე მეტი", 400);
             }
 
-            if (transaction.TransactionDate.Date > DateTime.UtcNow.Date)
+            if (transaction.TransactionDate.Date > DateTime.Now.Date)
             {
                 throw new AppException("DATE_IS_IN_FUTURE", "თარიღი არ უნდა იყოს მომავალში", 400);
             }
@@ -137,7 +137,7 @@ namespace FinanceTracker.Infrastructure.Services
             {
                 throw new AppException("AMOUNT_IS_NEGATIVE", "ოდენობა უნდა იყოს 0-ზე მეტი", 400);
             }
-            if (transaction.TransactionDate.Date > DateTime.UtcNow.Date)
+            if (transaction.TransactionDate.Date > DateTime.Now.Date)
             {
                 throw new AppException("DATE_IS_IN_FUTURE", "თარიღი არ უნდა იყოს მომავალში", 400);
             }

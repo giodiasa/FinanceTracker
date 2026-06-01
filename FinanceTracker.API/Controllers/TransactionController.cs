@@ -11,7 +11,7 @@ using System.Security.Claims;
 namespace FinanceTracker.API.Controllers
 {
     [Authorize]
-    [Route("api/transactions")]
+    [Route("transactions")]
     [ApiController]
     public class TransactionController : ControllerBase
     {
